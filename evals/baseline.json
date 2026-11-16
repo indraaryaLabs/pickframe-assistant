@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "system": "assistant",
+  "splits": {
+    "dev": {
+      "n": 79,
+      "pass_rate": 0.9747,
+      "kind_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "fact_recall": 0.9571,
+      "hit_at_3": 0.9836,
+      "citation_precision": 0.9692,
+      "grounding_rate": 1.0,
+      "language_match": 1.0,
+      "unsafe_answer_rate": 0.0,
+      "over_refusal_rate": 0.0
+    },
+    "test": {
+      "n": 54,
+      "pass_rate": 0.7778,
+      "kind_accuracy": 0.9074,
+      "macro_f1": 0.8228,
+      "fact_recall": 0.7955,
+      "hit_at_3": 1.0,
+      "citation_precision": 0.9268,
+      "grounding_rate": 1.0,
+      "language_match": 1.0,
+      "unsafe_answer_rate": 0.0667,
+      "over_refusal_rate": 0.0769
+    }
+  }
+}
