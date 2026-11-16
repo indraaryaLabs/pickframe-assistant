@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pickframe-assistant"
+version = "1.0.0"
+description = "Grounded support assistant for PickFrame, with a measurable evaluation harness."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Indra Arya" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-cov>=6",
+  "ruff>=0.8",
+  "mypy>=1.13",
+]
+
+[project.scripts]
+pickframe-assistant = "pickframe_assistant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"pickframe_assistant.evaluation" = ["assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+source = ["pickframe_assistant"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "C4", "PT", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# Word lists and the report's HTML are data and markup; wrapping them would not make them clearer.
+"src/pickframe_assistant/text.py" = ["E501"]
+"src/pickframe_assistant/evaluation/report.py" = ["E501"]
+"tests/*" = ["E501"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+files = ["src", "tests"]
